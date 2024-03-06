@@ -20,17 +20,19 @@ jobs:
       - name: Build React app
         run: npm run build
 
-      - name: Deploy to server REMOTE_HOST ${{ secrets.SSH_HOST }} REMOTE_USER ${{ secrets.SSH_USERNAME }} SSH_PRIVATE_KEY ${{ secrets.SSH_KEY }}
-        run: |
-          echo "${{ secrets.SSH_KEY }}" > StarMatch.pem
-          ssh -i "StarMatch.pem" ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} rm -rf ${{ env.TARGET_DIR }}/*
-          scp -i "StarMatch.pem" -r ${{ env.PROJECT_ROOT_DIR }}/build/* ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ env.TARGET_DIR }}
-      - name: sleep
-        run: sleep 120
+      - name: Deploy to server
+        uses: easingthemes/ssh-deploy@v5.0.3
+        with:
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+          SOURCE: "build/"
+          TARGET: "/var/www/html"
+          SCRIPT_BEFORE: |
+            rm -rf /var/www/html/*
+
 env:
   # Replace with your actual secrets
   SSH_HOST: ${{ secrets.SSH_HOST }}
   SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
   SSH_KEY: ${{ secrets.SSH_KEY }}
-  TARGET_DIR: /var/www/html
-  PROJECT_ROOT_DIR: front
