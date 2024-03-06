@@ -1,0 +1,40 @@
+.body {
+    margin: 0;
+}
+
+.title {
+    font-size: 36px;
+}
+
+.description-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.max-width-50 {
+    max-width: 50%;
+}
+
+.poster-sizing {
+    max-width: 300px;
+    max-height: 500px;
+}
+
+.poster {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.description {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.raiting-content {
+    font-weight: 600;
+    font-size: 24px;
+    margin-top: 60px;
+}
