@@ -1,3 +1,5 @@
 function NavBar() {
-  return <div></div>;
+  return <div>Ceci est ma navBar</div>;
 }
+
+export default NavBar;
