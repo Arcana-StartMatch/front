@@ -40,7 +40,6 @@ const MovieDescription = () => {
             backgroundRepeat: `no-repeat`,
             backgroundSize: `cover`,
             minHeight: `100vh`}}>
-            <NavBar/>
             <div style={{margin: "16px"}}>
                 <h1 className={"title"}>Titre du film: {title}</h1>
                 <div className={"description-container"}>
