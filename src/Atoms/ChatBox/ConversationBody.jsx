@@ -1,48 +1,100 @@
 import envoi_msg_icon from "../../img/envoyer_msg.svg";
 import messages_icon from "../../img/chatbox_icon.svg";
-import * as React from "react";
+
+import { useState, useRef, useEffect } from "react";
 import "./conversationBody.css";
 export default function ConversationBody() {
-  const [messages, setMessages] = React.useState([
+  const [etape, setEtape] = useState(0);
+  const [films, setFilms] = useState([]);
+  const [criteres, setCriteres] = useState([]);
+
+  // Tableau des questions et reponses
+  const questionsReponses = [
     {
-      message: "Bonjour",
-      timestamp: new Date().getTime(),
-      date: new Date().toLocaleString(),
+      question: "Bonjour, quel genre de film recherchez-vous ?",
+      reponses: [
+        {
+          texte: "Un film d'action",
+          action: () => setCriteres([...criteres, "action"]),
+        },
+        {
+          texte: "Une comedie",
+          action: () => setCriteres([...criteres, "comedie"]),
+        },
+        {
+          texte: "Un film d'horreur",
+          action: () => setCriteres([...criteres, "horreur"]),
+        },
+        {
+          texte: "Autre",
+          action: () => setEtape(1),
+        },
+      ],
     },
     {
-      message: "Bonjour",
-      type: 1,
-      timestamp: new Date().getTime(),
-      date: new Date().toLocaleString(),
+      question: "Quel est votre âge ?",
+      reponses: [
+        {
+          texte: "Moins de 18 ans",
+          action: () => setCriteres([...criteres, "-18"]),
+        },
+        {
+          texte: "Entre 18 et 25 ans",
+          action: () => setCriteres([...criteres, "18-25"]),
+        },
+        {
+          texte: "Plus de 25 ans",
+          action: () => setCriteres([...criteres, "+25"]),
+        },
+        {
+          texte: "Autre",
+          action: () => setEtape(2),
+        },
+      ],
     },
     {
-      message: `Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s'est intéressé à un des mots latins les plus obscurs, consectetur, extrait d'un passage du Lorem Ipsum, et en étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable du Lorem Ipsum. Il provient en fait des sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" (Des Suprêmes Biens et des Suprêmes Maux) de Cicéron. Cet ouvrage, très populaire pendant la Renaissance, est un traité sur la théorie de l'éthique. Les premières lignes du Lorem Ipsum, "Lorem ipsum dolor sit amet...", proviennent de la section 1.10.32.`,
-      timestamp: new Date().getTime(),
-      date: new Date().toLocaleString(),
+      question: "Quel est votre niveau d'etudes ?",
+      reponses: [
+        {
+          texte: "Baccalaureat",
+          action: () => setCriteres([...criteres, "bac"]),
+        },
+        {
+          texte: "Licence",
+          action: () => setCriteres([...criteres, "licence"]),
+        },
+        {
+          texte: "Master",
+          action: () => setCriteres([...criteres, "master"]),
+        },
+        {
+          texte: "Doctorat",
+          action: () => setCriteres([...criteres, "doctorat"]),
+        },
+        {
+          texte: "Autre",
+          action: () => setEtape(3),
+        },
+      ],
     },
     {
-      message: `Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s'est intéressé à un des mots latins les plus obscurs, consectetur, extrait d'un passage du Lorem Ipsum, et en étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable du Lorem Ipsum. Il provient en fait des sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" (Des Suprêmes Biens et des Suprêmes Maux) de Cicéron. Cet ouvrage, très populaire pendant la Renaissance, est un traité sur la théorie de l'éthique. Les premières lignes du Lorem Ipsum, "Lorem ipsum dolor sit amet...", proviennent de la section 1.10.32.`,
-      type: 1,
-      timestamp: new Date().getTime(),
-      date: new Date().toLocaleString(),
+      question:
+        "Voici quelques films qui correspondent à vos criteres. Avez-vous besoin d'aide pour faire votre choix ?",
+      films: 1,
+      reponses: [
+        {
+          texte: "Recommencer ...",
+          action: () => setEtape(0),
+        },
+      ],
     },
-    {
-      message: `Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s'est intéressé à un des mots latins les plus obscurs, consectetur, extrait d'un passage du Lorem Ipsum, et en étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable du Lorem Ipsum. Il provient en fait des sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" (Des Suprêmes Biens et des Suprêmes Maux) de Cicéron. Cet ouvrage, très populaire pendant la Renaissance, est un traité sur la théorie de l'éthique. Les premières lignes du Lorem Ipsum, "Lorem ipsum dolor sit amet...", proviennent de la section 1.10.32.`,
-      timestamp: new Date().getTime(),
-      date: new Date().toLocaleString(),
-    },
-    {
-      message: `Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s'est intéressé à un des mots latins les plus obscurs, consectetur, extrait d'un passage du Lorem Ipsum, et en étudiant tous les usages de ce mot dans la littérature classique, découvrit la source incontestable du Lorem Ipsum. Il provient en fait des sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" (Des Suprêmes Biens et des Suprêmes Maux) de Cicéron. Cet ouvrage, très populaire pendant la Renaissance, est un traité sur la théorie de l'éthique. Les premières lignes du Lorem Ipsum, "Lorem ipsum dolor sit amet...", proviennent de la section 1.10.32.`,
-      type: 1,
-      timestamp: new Date().getTime(),
-      date: new Date().toLocaleString(),
-    },
-  ]);
-  const newMessage = React.useRef("");
-  const dernierMessage = React.useRef("");
+  ];
+
+  const newMessage = useRef("");
+  const dernierMessage = useRef("");
 
   const sendNewMsg = function (e) {
-    setMessages([
+    /* setMessages([
       ...messages,
       {
         message: newMessage.current.value,
@@ -55,10 +107,20 @@ export default function ConversationBody() {
     // newMessageElement.scrollIntoView(true);
 
     newMessage.current.value = "";
+    */
   };
-  React.useEffect(() => {
+  useEffect(() => {
+    if (criteres.length != 0 || etape != 0) {
+      setEtape((etape + 1) % 4);
+    }
+  }, [criteres]);
+  useEffect(() => {
+    console.log(etape);
+    if (etape === 3 && films.length === 0) {
+      setFilms(["Film A", "Film B", "Film C"]);
+    }
     dernierMessage.current.scrollTop = dernierMessage.current.scrollTopMax;
-  }, [messages]);
+  }, [etape, films]);
 
   return (
     <>
@@ -70,20 +132,61 @@ export default function ConversationBody() {
       </div>
 
       <div className="chatBot_messages" ref={dernierMessage}>
-        {messages.map((message) => (
+        <div
+          style={{
+            width: "100%",
+            textAlign: "left",
+          }}
+        >
+          <span className="chatBot_message">
+            <div
+              style={{
+                textAlign: "justify",
+                padding: "7px",
+              }}
+            >
+              <p>{questionsReponses[etape].question}</p>
+            </div>
+          </span>
+        </div>
+        {etape > 0 && questionsReponses[etape].films ? (
+          films.map((film, index) => (
+            <div
+              style={{
+                width: "100%",
+                textAlign: "right",
+              }}
+              key={"div1" + index}
+            >
+              <span
+                key={"div" + index}
+                className="chatBot_message_rep chatBot_message"
+              >
+                <div
+                  style={{
+                    textAlign: "justify",
+                    padding: "7px",
+                  }}
+                >
+                  <p key={index}>{film}</p>
+                </div>
+              </span>
+            </div>
+          ))
+        ) : (
+          <></>
+        )}
+        {questionsReponses[etape].reponses?.map((reponse, index) => (
           <div
             style={{
               width: "100%",
-              textAlign: message.type ? "right" : "left",
+              textAlign: "right",
             }}
+            key={"div1" + index}
           >
             <span
-              key={"div" + message.timestamp}
-              className={
-                message.type
-                  ? "chatBot_message_rep chatBot_message"
-                  : "chatBot_message"
-              }
+              key={"div" + index}
+              className="chatBot_message_rep chatBot_message"
             >
               <div
                 style={{
@@ -91,7 +194,9 @@ export default function ConversationBody() {
                   padding: "7px",
                 }}
               >
-                {message.message}
+                <button key={"abc" + index} onClick={reponse.action}>
+                  {reponse.texte}
+                </button>
               </div>
             </span>
           </div>

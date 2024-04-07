@@ -28,6 +28,7 @@
   flex-wrap: wrap;
   padding : 20px;
   margin : auto;
+  border-collapse: collapse;
 }
 .th {
   text-align: right;
