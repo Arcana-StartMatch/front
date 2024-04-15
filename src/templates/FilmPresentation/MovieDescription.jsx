@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import "./movieDescription.css";
-import NavBar from "../../Atoms/NavBar";
+import NavBar from "../../Atoms/NavBar/NavBar";
 import React, {useEffect, useState} from "react";
 import {retrieveMovieById} from "../../services/filmPresentationServices";
 import MovieRating from "../../Atoms/MovieRating";

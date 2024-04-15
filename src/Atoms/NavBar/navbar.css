@@ -6,12 +6,13 @@
 }
 
 .nav_bar_el {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     font-size: xx-large;
-    /*color: rgb(214, 223, 231);
-    background-color: rgb(149, 137, 0);
-    */
     color: rgb(0, 0, 0);
-    background-color: #F4841D;
+    background-color: #FDFF95;
     border-radius: 5px;
     height: 40px;
     margin: 30px;
