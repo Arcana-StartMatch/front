@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {retrieveCreditsByMovie} from "../services/filmPresentationServices";
 
 const MovieComposition = (props) => {
-
     const [actors, setActors] = useState([]);
     const [directions, setDirections] = useState([]);
 

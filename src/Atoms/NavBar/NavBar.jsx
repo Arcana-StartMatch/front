@@ -2,10 +2,12 @@ import "./navbar.css";
 
 export default function NavBar() {
     return (
-        <div className="nav_bar">
-            <div className="nav_bar_els">
-                <a className="nav_bar_el" href={"/"}>Acceuil</a>
-            </div>
-        </div>
+        <nav className="navbar-container">
+            <a href={"/"}>Choix préférences</a>
+            { JSON.parse(localStorage.getItem("YMtach-preferences")) !== null
+                ? <a href="/movie" style={{marginLeft: "24px"}}>Liste des préférences </a>
+                : <></>
+            }
+        </nav>
     );
 }

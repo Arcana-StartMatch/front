@@ -1,58 +1,130 @@
-.forms {
-  margin-left: 15%;
-  width: max-content;
-  padding : 30px;
-  height: max-content;
- 
-  
-  border-radius: 25px;
+form
+{
+  width: 80%;
+  padding: 16px;
+  background-color: #FAF5C9;
+  margin: 64px auto 16px;
+  border-radius: 4px;
+  border: 8px solid #D54A47;
 }
-.forms h1 {
-  background-color: #F4841D;
-  padding: 10px 20px;
-  border-radius: 3px;
-  border-color: #F4841D;
-  width:max-content;
-}
-.forms label,
-.forms input{
-  background-color: #F4841D;
-  padding: 6px;
-  border-radius: 3px;
-  border-color: #F4841D;
-}
-.forms_els{
-  width:max-content;
+
+.child-choice,
+.teenager-choice,
+.best-movie-rate-choice
+{
   display: flex;
-  flex-direction:column;
-  flex-wrap: wrap;
-  padding : 20px;
-  margin : auto;
+  align-items: center;
+  margin-bottom: 16px;
 }
-.th {
-  text-align: right;
-  padding : 10px;
+
+.gender-movie-choice
+{
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
 }
-.td {
-  text-align: left;
-padding: 10px;
+
+.best-movie-choice
+{
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
 }
-.donnees{
-  padding: 5px;
+
+label
+{
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+.old-choice
+{
+  margin-bottom: 16px;
+}
+
+.searchForm
+{
+  cursor: pointer;
+  background-color: white;
   border-radius: 3px;
+  padding: 6px;
+  font-size: 20px;
 }
-#valider_btn{
-  margin : auto ;
-  padding: 5px 10px;
-  font-size: x-large;
-  border-radius: 7px;
-  background: #F4841D;
-  border-color: #F4841D;
+
+.error
+{
+  margin-top: 32px;
+  color: #D54A47;
+  text-align: center;
 }
-.btn_div{
-  margin: auto;
-  width : min-content;  
+
+.education-choice
+{
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
 }
-.form_div th{
-  border-left: 2px solid #F4841D;
+
+.gender-movie-container label
+{
+  width: 40%;
 }
+
+/*.forms {*/
+/*  margin-left: 15%;*/
+/*  width: max-content;*/
+/*  padding : 30px;*/
+/*  height: max-content;*/
+/* */
+/*  */
+/*  border-radius: 25px;*/
+/*}*/
+/*.forms h1 {*/
+/*  background-color: #F4841D;*/
+/*  padding: 10px 20px;*/
+/*  border-radius: 3px;*/
+/*  border-color: #F4841D;*/
+/*  width:max-content;*/
+/*}*/
+/*.forms label,*/
+/*.forms input{*/
+/*  background-color: #F4841D;*/
+/*  padding: 6px;*/
+/*  border-radius: 3px;*/
+/*  border-color: #F4841D;*/
+/*}*/
+/*.forms_els{*/
+/*  width:max-content;*/
+/*  display: flex;*/
+/*  flex-direction:column;*/
+/*  flex-wrap: wrap;*/
+/*  padding : 20px;*/
+/*  margin : auto;*/
+/*}*/
+/*.th {*/
+/*  text-align: right;*/
+/*  padding : 10px;*/
+/*}*/
+/*.td {*/
+/*  text-align: left;*/
+/*padding: 10px;*/
+/*}*/
+/*.donnees{*/
+/*  padding: 5px;*/
+/*  border-radius: 3px;*/
+/*}*/
+/*#valider_btn{*/
+/*  margin : auto ;*/
+/*  padding: 5px 10px;*/
+/*  font-size: x-large;*/
+/*  border-radius: 7px;*/
+/*  background: #F4841D;*/
+/*  border-color: #F4841D;*/
+/*}*/
+/*.btn_div{*/
+/*  margin: auto;*/
+/*  width : min-content;  */
+/*}*/
+/*.form_div th{*/
+/*  border-left: 2px solid #F4841D;*/
+/*}*/
