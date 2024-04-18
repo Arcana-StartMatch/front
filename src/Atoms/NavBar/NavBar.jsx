@@ -1,14 +1,13 @@
-import LoginEl from "../LoginEl/LoginEl";
 import "./navbar.css";
+
 export default function NavBar() {
-  return (
-    <div className="nav_bar">
-      <div className="nav_bar_els">
-        <div className="nav_bar_el">Acceuil</div>
-        <div className="nav_bar_el">Films</div>
-        <div className="nav_bar_el">Cat 2</div>
-      </div>
-      <LoginEl></LoginEl>
-    </div>
-  );
+    return (
+        <nav className="navbar-container">
+            <a href={"/"}>Choix préférences</a>
+            { JSON.parse(localStorage.getItem("YMtach-preferences")) !== null
+                ? <a href="/movie" style={{marginLeft: "24px"}}>Liste des préférences </a>
+                : <></>
+            }
+        </nav>
+    );
 }

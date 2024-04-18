@@ -1,23 +1,18 @@
-.nav_bar {
-    display:flex;
-    justify-content: space-between;
-    width : 90%;
-    margin : auto;
-}
-
-.nav_bar_el {
-    font-size: xx-large;
-    /*color: rgb(214, 223, 231);
-    background-color: rgb(149, 137, 0);
-    */
-    color: rgb(0, 0, 0);
-    background-color: #F4841D;
-    border-radius: 5px;
-    height: 40px;
-    margin: 30px;
-    padding: 5px 15px 5px 15px;
-}
-
-.nav_bar_els {
+.navbar-container {
     display: flex;
+    width: 80%;
+    margin: 24px 0;
+    flex-wrap: wrap;
+}
+
+.navbar-container a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background-color: #FAF5C9;
+    border-radius: 4px;
+    color: black;
+    font-size: 32px;
+    padding: 8px;
 }

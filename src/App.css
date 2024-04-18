@@ -1,13 +1,17 @@
-.main{
-    background-repeat: no-repeat;
-    background-size:cover;
-    background-position: center;
-    font-family: 'Inter';
-    min-height: 100vh;
+.container
+{
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 100%;
 }
-label{
-    margin-right: 15px;
+
+#root
+{
+    height: 100%;
 }
-h1{
-    margin-left:7%;
+
+body
+{
+    height: 98vh;
+    margin: 0 !important;
 }

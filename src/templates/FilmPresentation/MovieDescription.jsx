@@ -1,14 +1,19 @@
 import {useParams} from "react-router-dom";
 import "./movieDescription.css";
-import NavBar from "../../Atoms/NavBar";
+import NavBar from "../../Atoms/NavBar/NavBar";
 import React, {useEffect, useState} from "react";
-import {retrieveMovieById} from "../../services/filmPresentationServices";
+import {retrieveMovieByName} from "../../services/filmPresentationServices";
 import MovieRating from "../../Atoms/MovieRating";
-import MovieComposition from "../../Atoms/MovieComposition";
-import MovieBackGround from "../../img/bg/MovieDescription.svg"
 
-const MovieDescription = () => {
+const MovieDescription = ({...props}) => {
     const {idMovie} = useParams();
+    const dataPreferences = JSON.parse(localStorage.getItem("YMtach-preferences-response"));
+    const moviePreference = dataPreferences.find((movie) => (movie.id.toString() === idMovie.toString()));
+
+    if (moviePreference === undefined) {
+        window.location.href = "/movie";
+    }
+
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [rate, setRate] = useState("");
@@ -16,11 +21,11 @@ const MovieDescription = () => {
     const [releaseDate, setReleaseDate] = useState("");
 
     const fetchMovieInformations = async () => {
-        const data = await retrieveMovieById(idMovie);
+        const data = await retrieveMovieByName(moviePreference.title);
 
         setTitle(data.title);
         setDescription(data.overview);
-        setRate(data.vote_average);
+        setRate(moviePreference.rating);
         setPosterURL("https://image.tmdb.org/t/p/original" + data.poster_path);
 
         const dateObject = new Date(data.release_date);
@@ -35,12 +40,9 @@ const MovieDescription = () => {
 
 
     return (
-        <div style={{
-            backgroundImage: `url(${MovieBackGround})`,
-            backgroundRepeat: `no-repeat`,
-            backgroundSize: `cover`,
-            minHeight: `100vh`}}>
-            <div style={{margin: "16px"}}>
+        <div className={"container"}>
+            <NavBar/>
+            <div style={{margin: "16px", color: "white"}}>
                 <h1 className={"title"}>Titre du film: {title}</h1>
                 <div className={"description-container"}>
                     <div className="max-width-50 description">
@@ -48,15 +50,14 @@ const MovieDescription = () => {
                             <strong>Date de sortie:</strong> {releaseDate}
                         </div>
                         {description}
-                        <MovieRating raiting={rate}/>
                     </div>
                     <div className="poster">
                         <img className={"poster-sizing"} src={posterURL} alt={"Affiche du film: " + title}/>
                     </div>
                 </div>
-                <hr style={{margin: "32px 0", width: "90%"}}/>
-                <MovieComposition idMovie={idMovie} />
+                {/*<MovieComposition idMovie={tmdbIdMovie} />*/}
             </div>
+            <MovieRating raiting={rate}/>
         </div>
     );
 };
