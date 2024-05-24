@@ -43,11 +43,11 @@ const MovieDescription = ({...props}) => {
         <div className={"container"}>
             <NavBar/>
             <div style={{margin: "16px", color: "white"}}>
-                <h1 className={"title"}>Titre du film: {title}</h1>
+                <h1 className={"title"}>Movie title: {title}</h1>
                 <div className={"description-container"}>
                     <div className="max-width-50 description">
                         <div style={{marginBottom: "28px"}}>
-                            <strong>Date de sortie:</strong> {releaseDate}
+                            <strong>Release date:</strong> {releaseDate}
                         </div>
                         {description}
                     </div>
@@ -55,7 +55,7 @@ const MovieDescription = ({...props}) => {
                         <img className={"poster-sizing"} src={posterURL} alt={"Affiche du film: " + title}/>
                     </div>
                 </div>
-                {/*<MovieComposition idMovie={tmdbIdMovie} />*/}
+
             </div>
             <MovieRating raiting={rate}/>
         </div>

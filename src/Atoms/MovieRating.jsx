@@ -5,7 +5,7 @@ const MovieRating = (props) => {
 
     return (
         <div className={"raiting-content"}>
-            Note globale :
+            Overall score :
             <div style={{fontSize: "36px"}}>
                 <Rating raiting={props.raiting}/>
             </div>

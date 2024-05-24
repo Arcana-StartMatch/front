@@ -6,41 +6,41 @@ import {retrieveRandomMovie} from "../../services/filmPresentationServices";
 function Form() {
     const defaultValueGender = [
         {id: 1, data: "Thriller", traductionFr: "Thriller"},
-        {id: 2, data: "Comedy", traductionFr: "Comédie"},
-        {id: 3, data: "Mystery", traductionFr: "Mystère"},
+        {id: 2, data: "Comedy", traductionFr: "Comedy"},
+        {id: 3, data: "Mystery", traductionFr: "Mystery"},
         {id: 4, data: "Western", traductionFr: "Western"},
         {id: 5, data: "Crime", traductionFr: "Crime"},
         {id: 6, data: "Animation", traductionFr: "Animation"},
         {id: 7, data: "Action", traductionFr: "Action"},
-        {id: 8, data: "War", traductionFr: "Guerre"},
-        {id: 9, data: "Adventure", traductionFr: "Aventure"},
-        {id: 10, data: "Horror", traductionFr: "Horreur"},
+        {id: 8, data: "War", traductionFr: "War"},
+        {id: 9, data: "Adventure", traductionFr: "Adventure"},
+        {id: 10, data: "Horror", traductionFr: "Horror"},
         {id: 11, data: "Romance", traductionFr: "Romance"},
-        {id: 12, data: "Fantasy", traductionFr: "Fantaisie"},
-        {id: 13, data: "Foreign", traductionFr: "Etranger"},
-        {id: 14, data: "History", traductionFr: "Historique"},
-        {id: 15, data: "TV Movie", traductionFr: "Télévisé"},
-        {id: 16, data: "Family", traductionFr: "Familliale"},
-        {id: 17, data: "Science Fiction", traductionFr: "Science-fiction"},
-        {id: 18, data: "Drama", traductionFr: "Drame"},
-        {id: 19, data: "Music", traductionFr: "Musique"},
-        {id: 20, data: "Documentary", traductionFr: "Documentaire"},
+        {id: 12, data: "Fantasy", traductionFr: "Fantasy"},
+        {id: 13, data: "Foreign", traductionFr: "Foreign"},
+        {id: 14, data: "History", traductionFr: "History"},
+        {id: 15, data: "TV Movie", traductionFr: "TV Movie"},
+        {id: 16, data: "Family", traductionFr: "Family"},
+        {id: 17, data: "Science Fiction", traductionFr: "Science Fiction"},
+        {id: 18, data: "Drama", traductionFr: "Drama"},
+        {id: 19, data: "Music", traductionFr: "Music"},
+        {id: 20, data: "Documentary", traductionFr: "Documentary"},
     ];
 
     const optionsEducation = [
-        {id: 1, data: "Graduation", label: "Bac +2"},
-        {id: 2, data: "PhD", label: "Doctorat"},
-        {id: 3, data: "Master", label: "Licence"},
-        {id: 4, data: "2n Cycle", label: "Master"},
-        {id: 5, data: "Basic", label: "Bac"}
+        {id: 1, data: "Graduation", label: "Graduation"},
+        {id: 2, data: "PhD", label: "PhD"},
+        {id: 3, data: "Master", label: "Master"},
+        {id: 4, data: "2n Cycle", label: "2n Cycle"},
+        {id: 5, data: "Basic", label: "Basic"}
     ];
 
     const optionsMaritalSituation = [
-        {id: 1, data: "Single", label: "Célibataire"},
-        {id: 2, data: "Together", label: "Couple"},
-        {id: 3, data: "Married", label: "Marrié(e)"},
-        {id: 4, data: "Divorced", label: "Divorcé(e)"},
-        {id: 5, data: "Widow", label: "veuf(ve)"}
+        {id: 1, data: "Single", label: "Single"},
+        {id: 2, data: "Together", label: "Together"},
+        {id: 3, data: "Married", label: "Married"},
+        {id: 4, data: "Divorced", label: "Divorced"},
+        {id: 5, data: "Widow", label: "Widow"}
     ];
 
     const sortByName = (a, b) => {
@@ -121,7 +121,7 @@ function Form() {
             setError("");
             setBestMovieRate(e.target.value);
         } else {
-            setError("La note du film doit être comprise entre 0 et 5");
+            setError("Film score must be between 0 and 5");
         }
     }
 
@@ -129,14 +129,14 @@ function Form() {
         let messageError = "";
         if (old === undefined && choiceGender.length === 0 && autoCompleteValueEducation === null
             && autoCompleteValueMaritale === null && bestMovie.length === 0 && bestMovieRate === undefined) {
-            setError("Tous les champs doivent-être remplis.");
+            setError("All fields must be completed.");
         } else {
-            messageError += old === undefined ? "Vous devez définir un âge." : "";
-            messageError += choiceGender.length === 0 ? "Vous devez choisir un genre." : "";
-            messageError += autoCompleteValueEducation === null ? "Vous devez définir votre dernier diplôme obtenue." : "";
-            messageError += autoCompleteValueMaritale === null ? "Vous devez définir votre dstatus maritale." : "";
-            messageError += bestMovie.length === 0 ? "Vous devez choisir au moins un film de notre sélection" : "";
-            messageError += bestMovieRate === undefined ? "Vous devez mettre uen note au film choisie de la sélection" : "";
+            messageError += old === undefined ? "You need to set an age." : "";
+            messageError += choiceGender.length === 0 ? "You need to choose a genre." : "";
+            messageError += autoCompleteValueEducation === null ? "You need to define your most recent diploma." : "";
+            messageError += autoCompleteValueMaritale === null ? "You need to define your marital status." : "";
+            messageError += bestMovie.length === 0 ? "You must choose at least one film from our selection." : "";
+            messageError += bestMovieRate === undefined ? "You must rate the film chosen from the selection." : "";
 
             if (messageError === "") {
                 event.preventDefault();
@@ -159,7 +159,7 @@ function Form() {
         <form>
             <div className="gender-movie-container">
                 <div className="old-choice" style={{display: "flex"}}>
-                    <label htmlFor="choiceOld">Quel est votre âge ?</label>
+                    <label htmlFor="choiceOld">How old are you?</label>
                     <Input id={"choiceOld"} type={"number"} defaultValue={old}
                            sx={{
                                width: "20%",
@@ -171,7 +171,7 @@ function Form() {
                            onChange={(e) => (setOld(e.target.value))} placeholder={"23"}/>
                 </div>
                 <div className="gender-movie-choice">
-                    <label htmlFor="choiceGenderMovie">Quels sont les genres de film que vous aimez ?</label>
+                    <label htmlFor="choiceGenderMovie">What kind of films do you like?</label>
                     <Autocomplete
                         id={"choiceGenderMovie"}
                         disablePortal
@@ -191,38 +191,38 @@ function Form() {
                     })}
                 </div>
                 <div className="education-choice">
-                    <label htmlFor="choiceEducation">Quelle est votre niveau de diplôme ?</label>
+                    <label htmlFor="choiceEducation">What is your level of qualification?</label>
                     <Autocomplete
                         disablePortal
                         options={optionsEducation}
                         sx={{width: "35%", backgroundColor: "#FAF3E3", borderRadius: "4px"}}
-                        renderInput={(params) => <TextField {...params} label="Niveau diplôme"/>}
+                        renderInput={(params) => <TextField {...params} label="Diploma level"/>}
                         onChange={handleEducation}
                     />
                 </div>
                 <div className="education-choice">
-                    <label htmlFor="choiceEducation">Quelle est votre situation maritale ?</label>
+                    <label htmlFor="choiceEducation">What is your marital status?</label>
                     <Autocomplete
                         disablePortal
                         options={optionsMaritalSituation}
                         sx={{width: "35%", backgroundColor: "#FAF3E3", borderRadius: "4px"}}
-                        renderInput={(params) => <TextField {...params} label="Situation maritale"/>}
+                        renderInput={(params) => <TextField {...params} label="Marital status"/>}
                         onChange={handleMaritalSituation}
                     />
                 </div>
                 <div className="best-movie-choice">
-                    <label htmlFor="choiceEducation">Quel est votre film préféré cette sélection ?</label>
+                    <label htmlFor="choiceEducation">What's your favourite film in this selection?</label>
                     <Autocomplete
                         disablePortal
                         options={randomMovies}
                         sx={{width: "35%", backgroundColor: "#FAF3E3", borderRadius: "4px"}}
-                        renderInput={(params) => <TextField {...params} label="Film préféré parmis"/>}
+                        renderInput={(params) => <TextField {...params} label="Favourite film among"/>}
                         onChange={handleBestMovie}
                         getOptionLabel={(option) => option.original_title}
                     />
                 </div>
                 <div className="best-movie-rate-choice">
-                    <label htmlFor="choiceRateBestMovie">Quelle note lui donnerez vous sur 5 ?</label>
+                    <label htmlFor="choiceRateBestMovie">How would you rate it out of 5?</label>
                     <Input id={"choiceRateBestMovie"} type={"number"} defaultValue={bestMovieRate}
                            sx={{
                                width: "20%",
@@ -235,7 +235,7 @@ function Form() {
                 </div>
 
                 <div className="child-choice" style={{display: "flex", marginBottom: "16px"}}>
-                    <label htmlFor="choiceChild">Combien d'enfants avez vous ? (moins de 12 ans)</label>
+                    <label htmlFor="choiceChild">How many children do you have (under 12) ?</label>
                     <Input id={"choiceChild"} type={"number"} defaultValue={childChoice}
                            sx={{
                                width: "20%",
@@ -247,7 +247,7 @@ function Form() {
                            onChange={(e) => (setChildChoice(e.target.value))}/>
                 </div>
                 <div className="teenager-choice" style={{display: "flex"}}>
-                    <label htmlFor="choiceTeenager">Combien d'adolescent avez vous ?</label>
+                    <label htmlFor="choiceTeenager">How many teenagers do you have?</label>
                     <Input id={"choiceTeenager"} type={"number"} defaultValue={teenagerChoice}
                            sx={{
                                width: "20%",
@@ -262,7 +262,7 @@ function Form() {
             <div className="error">{error}</div>
             <div style={{display: "flex", justifyContent: "center", margin: "32px 0 16px 0"}}>
                 <button className={"searchForm"} type={"button"} onClick={handleSubmitForm}>
-                    Rechercher suivant mes préférences
+                    Search by preference
                 </button>
             </div>
         </form>
